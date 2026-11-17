@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1E2023">
+<meta name="theme-color" content="#141414">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Orçamentos">
@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
 <style>
-:root{--g:#1E2023;--c2:#2E3135;--conc:#9C9890;--ped:#E2DDD3;--cal:#F4F1EC;--lat:#A8865A;--ok:#3F7D58;--err:#A3412F;--r:12px}
+:root{--g:#141414;--c2:#262626;--conc:#9C9890;--ped:#E2DDD3;--cal:#F4F1EC;--lat:#C9A44C;--lat2:#A8862F;--ok:#3F7D58;--err:#A3412F;--r:12px}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--cal);color:var(--g);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif}
 header{position:sticky;top:0;z-index:20;background:var(--g);color:var(--cal);padding:calc(env(safe-area-inset-top) + 12px) 16px 12px;display:flex;align-items:center;gap:10px}
@@ -24,7 +24,7 @@ header .sync{margin-left:auto;font-size:12px;color:var(--conc);display:flex;alig
 main{padding:14px 14px calc(150px + env(safe-area-inset-bottom));max-width:720px;margin:0 auto}
 .tab{display:none}.tab.on{display:block}
 .card{background:#fff;border-radius:var(--r);padding:14px;margin-bottom:12px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
-.sec{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--lat);font-weight:700;margin:4px 0 10px}
+.sec{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--lat2);font-weight:700;margin:4px 0 10px}
 label{display:block;font-size:12px;color:#6F6A62;margin:10px 0 4px}
 input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--g);background:var(--cal);border:1px solid transparent;border-radius:10px;padding:11px 12px;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--lat);background:#fff}
@@ -38,7 +38,7 @@ textarea{resize:vertical;min-height:64px}
 .btn.w{width:100%}
 .item{border:1px solid var(--ped);border-radius:12px;padding:12px;margin-bottom:10px;background:#fff}
 .item .top{display:flex;align-items:center;gap:8px}
-.item .n{font-size:12px;font-weight:700;color:var(--lat);letter-spacing:.1em}
+.item .n{font-size:12px;font-weight:700;color:var(--lat2);letter-spacing:.1em}
 .item .tot{margin-left:auto;font-weight:700}
 .icon{background:none;border:0;padding:6px;color:var(--conc);font-size:18px;cursor:pointer}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
@@ -79,7 +79,7 @@ nav button.on{color:var(--cal)}nav button.on svg{color:var(--lat)}
 </head>
 <body>
 <header>
-  <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><path d="M0,0 L47.5,40 L47.5,100 L0,100Z" fill="#F4F1EC"/><path d="M52.5,40 L100,0 L100,100 L52.5,100Z" fill="#A8865A"/></svg>
+  <svg width="17" height="36" viewBox="0 0 100 216" aria-hidden="true"><path d="M0,0 H100 V81.5 A6.5,6.5 0 0 1 87,81.5 V45 H81.6 V35 H79.4 V45 H75 V58 H57 V28 L48.5,18 L40,28 V78 A6,6 0 0 1 28,78 V46 L20,39 L12,46 V90 A6,6 0 0 1 0,90 Z" fill="#C9A44C"/><path d="M0,106 H100 V118 H0 Z" fill="#C9A44C"/><path d="M18,117.4 H82 V118 C66,124 57.5,134 56.5,150 V193 C56.5,202 53.5,209 50,215 C46.5,209 43.5,202 43.5,193 V150 C42.5,134 34,124 18,118 V117.4 Z M50,195.6 A3.8,3.8 0 1 0 50,203.2 A3.8,3.8 0 1 0 50,195.6 Z" fill="#C9A44C" fill-rule="evenodd"/></svg>
   <div><h1>Master Pinturas</h1><div class="sub" id="hdrSub">Orçamentos</div></div>
   <div class="sync" id="syncInfo"><span class="dot" id="syncDot"></span><span id="syncTxt">Sem planilha</span></div>
 </header>
@@ -184,7 +184,7 @@ nav button.on{color:var(--cal)}nav button.on svg{color:var(--lat)}
     <div class="hint">Os orçamentos ficam salvos neste celular e, com a planilha configurada, também no Google Drive.</div>
   </div>
   <button class="btn pri w" id="btnSalvarCfg">Salvar ajustes</button>
-  <div class="hint" style="text-align:center;margin-top:14px">App de orçamentos · Master Pinturas · v1.0</div>
+  <div class="hint" style="text-align:center;margin-top:14px">App de orçamentos · Master Pinturas · v1.1</div>
 </section>
 </main>
 

@@ -4,7 +4,7 @@
   "use strict";
 
   // ---------------------------------------------------------------- constantes
-  const VERSAO = "1.0";
+  const VERSAO = "1.1";
   const SCRIPT_URL_PADRAO = "";   // opcional: cole aqui a URL do app da web para já vir configurado
   const CHAVE_PADRAO = "";        // opcional: a mesma chave do Code.gs
   const TIPOS = ["Pintura residencial", "Pintura comercial", "Pintura de fachada", "Muros e áreas externas",
@@ -222,7 +222,7 @@
     });
     fontesOk = true;
   }
-  const COR = { g: [30, 32, 35], cal: [244, 241, 236], lat: [168, 134, 90], ped: [226, 221, 211], conc: [156, 152, 144], c2: [46, 49, 53], tx2: [95, 92, 86], faixa: [250, 248, 245] };
+  const COR = { g: [20, 20, 20], cal: [244, 241, 236], lat: [168, 134, 47], ouro: [201, 164, 76], ped: [226, 221, 211], conc: [156, 152, 144], c2: [38, 38, 38], tx2: [95, 92, 86], faixa: [250, 248, 245] };
 
   function gerarPDF(o) {
     const { jsPDF } = window.jspdf;
@@ -236,8 +236,8 @@
 
     // cabeçalho
     fill(COR.g); doc.rect(0, 0, W, 40, "F");
-    doc.addImage(A.logo, "PNG", M, 13, 66, 66 * A.logoRatio);
-    label("Orçamento", W - M, 14, COR.lat, "right");
+    doc.addImage(A.logo, "PNG", M, 20 - 58 * A.logoRatio / 2, 58, 58 * A.logoRatio);
+    label("Orçamento", W - M, 14, COR.ouro, "right");
     doc.setFont("Display", "normal"); doc.setFontSize(19); tcol(COR.cal); doc.text("Nº " + pad(o.numero), W - M, 24, { align: "right" });
     doc.setFont("Body", "normal"); doc.setFontSize(8); tcol(COR.ped);
     doc.text(`Emitido em ${dataBR(o.data)}  ·  Válido até ${dataBR(addDias(o.data, o.validadeDias))}`, W - M, 31, { align: "right" });
@@ -288,7 +288,7 @@
     const opts = Object.entries(MAT); let x = M;
     opts.forEach(([k, v]) => {
       dcol(COR.g); doc.setLineWidth(0.35); doc.rect(x, y - 3.3, 3.8, 3.8);
-      if (o.materiais.situacao === k) { fill(COR.lat); doc.rect(x + 0.8, y - 2.5, 2.2, 2.2, "F"); }
+      if (o.materiais.situacao === k) { fill(COR.ouro); doc.rect(x + 0.8, y - 2.5, 2.2, 2.2, "F"); }
       doc.setFont("Body", o.materiais.situacao === k ? "bold" : "normal"); doc.setFontSize(9); tcol(COR.g); doc.text(v, x + 6, y);
       x += 52;
     });
@@ -331,7 +331,7 @@
       dcol(COR.ped); doc.setLineWidth(0.2); doc.line(tx, ty + 7, tx + tw, ty + 7); ty += 8.5;
     });
     ty += 2; fill(COR.g); doc.rect(tx, ty, tw, 15, "F");
-    label("Valor total", tx + 4, ty + 9.2);
+    label("Valor total", tx + 4, ty + 9.2, COR.ouro);
     doc.setFont("Display", "normal"); doc.setFontSize(15); tcol(COR.cal); doc.text(brl(t.total), tx + tw - 4, ty + 10, { align: "right" });
     y = Math.max(yy, ty + 15) + 6;
 
@@ -358,14 +358,14 @@
       doc.setPage(p);
       if (p > 1) {
         fill(COR.g); doc.rect(0, 0, W, 14, "F");
-        doc.addImage(A.logo, "PNG", M, 4.5, 30, 30 * A.logoRatio);
+        doc.addImage(A.logo, "PNG", M, 7 - 26 * A.logoRatio / 2, 26, 26 * A.logoRatio);
         doc.setFont("Body", "normal"); doc.setFontSize(8); tcol(COR.ped); doc.text(`Orçamento Nº ${pad(o.numero)} · ${o.cliente.nome}`, W - M, 8.6, { align: "right" });
       }
-      dcol(COR.lat); doc.setLineWidth(0.35); doc.line(M, H - 16, W - M, H - 16);
+      dcol(COR.ouro); doc.setLineWidth(0.35); doc.line(M, H - 16, W - M, H - 16);
       doc.setFont("Body", "normal"); doc.setFontSize(7.4); tcol(COR.tx2);
       const linha = [cfg.empresa, cfg.responsavel, cfg.documento, cfg.telefone && "WhatsApp " + cfg.telefone, cfg.instagram, cfg.regiao].filter(Boolean).join("  ·  ");
       doc.text(doc.splitTextToSize(linha, CW - 22)[0], M, H - 10.5);
-      doc.addImage(A.simbolo, "PNG", W - M - 5.5, H - 14.2, 5.5, 5.5);
+      doc.addImage(A.simbolo, "PNG", W - M - 3.2, H - 14.4, 3.2, 3.2 * A.simboloRatio);
       if (n > 1) { doc.setFontSize(7); tcol(COR.conc); doc.text(`${p}/${n}`, W - M - 8, H - 10.5, { align: "right" }); }
     }
     return doc;
